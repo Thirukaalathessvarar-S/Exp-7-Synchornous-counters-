@@ -1,10 +1,10 @@
 # Exp-6-Synchornous-counters - up counter and down counter 
-### AIM: To implement 4 bit up and down counters and validate  functionality.
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
+## AIM: To implement 4 bit up and down counters and validate  functionality.
+## HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
+## SOFTWARE REQUIRED:   Quartus prime
+## THEORY 
 
-## UP COUNTER 
+### UP COUNTER 
 The counter is a digital sequential circuit and here it is a 4 bit counter, which simply means it can count from 0 to 15 and vice versa based upon the direction of counting (up/down). 
 
 The counter (“count“) value will be evaluated at every positive (rising) edge of the clock (“clk“) cycle.
@@ -36,7 +36,7 @@ Four-bit “Up” Counter
 
 
 
-## DOWN COUNTER 
+### DOWN COUNTER 
 
 As well as counting “up” from zero and increasing or incrementing to some preset value, it is sometimes necessary to count “down” from a predetermined value to zero allowing us to produce an output that activates when the zero count or some other pre-set value is reached.
 
@@ -45,44 +45,78 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 4-bit Count Down Counter
-### Procedure
-/* write all the steps invloved */
+
+## Procedure
+### Step 1 : Create module projectname(input ,output) to start the verilog programming.
+
+### Step 2 : create a if loop condition to increase the count in counter_up function.
+
+### Step 3 : Similarly, create another loop for the down counter.
+
+### Step 4 : End the verilog program using keyword endmodule.
+
+### Step 5 : Get the timing diagram and RTL realization diagram for respective Counters.
 
 
-
-### PROGRAM 
+## PROGRAM 
+```
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Thirukaalathessvarar S
+RegisterNumber: 212222230161
 */
+```
 
+### Upcounter:
+```
+module upcounter (clk,A);
+input clk;
+output reg [0:3]A;
+always@ (posedge clk)
+begin
+	A[0]=((A[1])&(A[2])&(A[3]))^A[0];
+	A[1]=((A[2])&(A[3]))^A[1];
+	A[2]=((A[3]))^A[2];
+	A[3]=1^A[3];
+end
+endmodule
+```
 
+### Downcounter:
+```
+module downcounter (clk,A);
+input clk;
+output reg [0:3]A;
+always@ (posedge clk)
+begin
+	A[0]=((~A[1])&(~A[2])&(~A[3]))^A[0];
+	A[1]=((~A[2])&(~A[3]))^A[1];
+	A[2]=((~A[3]))^A[2];
+	A[3]=1^A[3];
+end
+endmodule
+```
 
+## RTL LOGIC UP COUNTER AND DOWN COUNTER  
+### UP counter
+![de6up](https://github.com/Thirukaalathessvarar-S/Exp-7-Synchornous-counters-/assets/121166390/d20ba7ab-87ae-4c57-9127-f13e3719356c)
 
-
-
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
-
-
-
-
-
-
+### Down counter
+![image](https://github.com/Thirukaalathessvarar-S/Exp-7-Synchornous-counters-/assets/121166390/4a8905a6-a1bd-49fc-a923-a49dfece16c2)
 
 ### TIMING DIGRAMS FOR COUNTER  
+### Up counter
+![image](https://github.com/Thirukaalathessvarar-S/Exp-7-Synchornous-counters-/assets/121166390/eb56ac75-e92c-46e6-ae85-5a7437f660e4)
 
+### Down counter
+![image](https://github.com/Thirukaalathessvarar-S/Exp-7-Synchornous-counters-/assets/121166390/46213acc-32e2-48f4-9aca-7b1eab048b67)
 
+## TRUTH TABLE 
+### Up counter
+![image](https://github.com/Thirukaalathessvarar-S/Exp-7-Synchornous-counters-/assets/121166390/63a7af2e-8a22-4170-bdb3-fc9621cca030)
 
-
-
-### TRUTH TABLE 
-
-
-
-
-
+### Down counter
+![image](https://github.com/Thirukaalathessvarar-S/Exp-7-Synchornous-counters-/assets/121166390/f4ff10fa-3105-4619-a977-63842f5bc952)
 
 ### RESULTS 
+Thus,The 4-bit up and down counter is implemented successfully.
